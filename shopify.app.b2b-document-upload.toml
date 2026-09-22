@@ -1,0 +1,63 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = ""
+name = "B2B document upload"
+application_url = "https://shopify.dev/apps/default-app-home"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+
+[webhooks]
+api_version = "2026-07"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/scopes_update" ]
+  uri = "/webhooks/app/scopes_update"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/webhooks/app/uninstalled"
+
+  [[webhooks.subscriptions]]
+  uri = "/webhooks/customers/data_request"
+  compliance_topics = [ "customers/data_request" ]
+
+  [[webhooks.subscriptions]]
+  uri = "/webhooks/customers/redact"
+  compliance_topics = [ "customers/redact" ]
+
+  [[webhooks.subscriptions]]
+  uri = "/webhooks/shop/redact"
+  compliance_topics = [ "shop/redact" ]
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_files,write_orders,write_app_proxy"
+
+[app_proxy]
+url = "/api/checkout/upload"
+prefix = "apps"
+subpath = "b2b-document-upload"
+
+[auth]
+redirect_urls = [ "https://shopify.dev/apps/default-app-home/api/auth" ]
+
+[cart.metafields.app.b2b_document]
+type = "file_reference"
+name = "B2B checkout document"
+description = "Purchase order or supporting document uploaded during B2B checkout."
+
+  [cart.metafields.app.b2b_document.access]
+  admin = "merchant_read_write"
+
+[order.metafields.app.b2b_document]
+type = "file_reference"
+name = "B2B checkout document"
+description = "Purchase order or supporting document from B2B checkout."
+
+  [order.metafields.app.b2b_document.access]
+  admin = "merchant_read_write"
+
+  [order.metafields.app.b2b_document.capabilities]
+  cart_to_order_copyable = true

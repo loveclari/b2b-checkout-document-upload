@@ -1,0 +1,45 @@
+api_version = "2025-07"
+
+[[extensions]]
+name = "B2B document upload"
+handle = "b2b-document-upload"
+type = "ui_extension"
+uid = "b2b-doc-upload-7f3a9c2e1b4d6e8f0a1c3b5d7e9f1a2b"
+
+[[extensions.targeting]]
+module = "./src/Checkout.jsx"
+target = "purchase.checkout.block.render"
+
+[[extensions.targeting.metafields]]
+namespace = "$app"
+key = "b2b_document"
+
+[extensions.capabilities]
+api_access = true
+network_access = true
+block_progress = true
+
+[extensions.settings]
+[[extensions.settings.fields]]
+key = "heading"
+type = "single_line_text_field"
+name = "Heading"
+description = "Title shown above the upload area."
+
+[[extensions.settings.fields]]
+key = "description"
+type = "multi_line_text_field"
+name = "Description"
+description = "Helper text for buyers (for example, upload your purchase order)."
+
+[[extensions.settings.fields]]
+key = "required"
+type = "boolean"
+name = "Require document before checkout"
+description = "When enabled, buyers must upload a file before they can complete checkout."
+
+[[extensions.settings.fields]]
+key = "api_base_url"
+type = "single_line_text_field"
+name = "App API base URL"
+description = "Required on password-protected dev stores. Paste the app_home URL from shopify app dev (e.g. https://abc.trycloudflare.com). Do NOT use the store App Proxy URL (/apps/b2b-document-upload). Leave blank only on live stores without a storefront password."

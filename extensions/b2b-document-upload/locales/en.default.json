@@ -1,0 +1,15 @@
+{
+  "heading": "Upload purchase order",
+  "description": "Attach a PDF or image of your purchase order. It will be saved on your order for review.",
+  "dropzoneLabel": "Purchase order document",
+  "uploading": "Uploading…",
+  "uploaded": "Document attached",
+  "uploadError": "Upload failed. Check the file type (PDF or image) and try again.",
+  "networkError": "Could not reach the app server. Keep shopify app dev running, paste the App URL from terminal App info into the field above, then open the app once in Shopify admin Dev Console.",
+  "authSetupError": "Open B2B document upload in Shopify admin (Dev Console link from shopify app dev) while dev is running, then try upload again.",
+  "devTunnelHint": "This dev store has a password, so the store /apps/ URL will not work.",
+  "devTunnelLabel": "App URL (from terminal: App info → App URL)",
+  "devTunnelHelp": "Paste https://….trycloudflare.com from shopify app dev, then upload your file.",
+  "rejectedFile": "Only PDF and image files are accepted.",
+  "requiredError": "Please upload a purchase order document to continue."
+}
